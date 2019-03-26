@@ -1,3 +1,4 @@
+<!--Home.vue的子组件-->
 <template>
 	<div class="header">
     <div class="header-left">
@@ -5,10 +6,10 @@
     </div>
     <div class="header-input">
       <span class="iconfont">&#xe632;</span>
-      输入城市/景点/游玩主题
+      input city or sight
     </div>
     <div class="header-right">
-      城市
+      City
       <span class="iconfont arrow-icon">&#xe62d;</span>
     </div>
 	</div>
