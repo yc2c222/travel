@@ -9,7 +9,7 @@
       input city or sight
     </div>
     <div class="header-right">
-      City
+      {{city}}
       <span class="iconfont arrow-icon">&#xe62d;</span>
     </div>
 	</div>
@@ -21,6 +21,9 @@
         name: 'HomeHeader',
         data() {
             return {}
+        },
+        props: {
+          city: String
         }
     }
 </script>
@@ -51,7 +54,7 @@
       border-radius .15rem
       color :#cccccc
   .header-right
-      width 1.24rem
+      width 1.8rem
       float right
       text-align center
       .arrow-icon

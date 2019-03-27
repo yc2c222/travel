@@ -4,7 +4,7 @@
     <div class="title">Recommend</div>
     <ul>
       <!--border-bottom设置了1像素边框 styles-》border.css-->
-      <li class="item border-bottom" v-for="item in recommendList" :key="item.id">
+      <li class="item border-bottom" v-for="item in list" :key="item.id">
         <img :src="item.imgUrl" alt="item.id" class="item-img">
         <div class="item-info">
           <p class="item-title">{{item.title}}</p>
@@ -19,16 +19,8 @@
 <script>
     export default {
         name: 'HomeRecommend',
-        data() {
-            return {
-              recommendList: [
-                {id:'001',imgUrl:'@/../static/img/recommend-6.jpeg',title:'Lorem',desc:'Lorem ipsum dolor sit amet,consectetur adipisicing elit.Dolore,eum.'},
-                {id:'002',imgUrl:'@/../static/img/recommend-9.jpeg',title:'Lorem',desc:'Lorem ipsum dolor sit amet,consectetur adipisicing elit.Dolore,eum.'},
-                {id:'003',imgUrl:'@/../static/img/recommend-14.jpeg',title:'Lorem',desc:'Lorem ipsum dolor sit amet,consectetur adipisicing elit.Dolore,eum.'},
-                {id:'004',imgUrl:'@/../static/img/recommend-12.jpeg',title:'Lorem',desc:'Lorem ipsum dolor sit amet,consectetur adipisicing elit.Dolore,eum.'},
-                {id:'005',imgUrl:'@/../static/img/recommend-10.jpeg',title:'Lorem',desc:'Lorem ipsum dolor sit amet,consectetur adipisicing elit.Dolore,eum.'},
-              ]
-            }
+        props:{
+          list: Array
         }
     }
 </script>

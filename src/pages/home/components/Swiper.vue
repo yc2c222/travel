@@ -1,9 +1,10 @@
 <!--Home.vue的子组件-->
 <template>
   <div class="wrapper">
-    <swiper :options="swiperOption">
+    <!--axios在get到数据前，swiper会用空数组做轮询幻灯片所以先通过computed确定list不为空再显示-->
+    <swiper :options="swiperOption" v-if="showSwiper">
       <!-- slides -->
-      <swiper-slide v-for="item in swiperList" :key="item.id">
+      <swiper-slide v-for="item in list" :key="item.id">
         <img class="swiper-img" :src="item.imgUrl" :alt="item.id"/>
       </swiper-slide>
       <!-- Optional controls -->
@@ -14,22 +15,23 @@
 
 <script>
     export default {
-        name: 'HomeSwiper',
+      name: 'HomeSwiper',
+      props:{
+          list:Array
+      },
         data() {
             return {
               swiperOption:{
                 pagination: '.swiper-pagination',
                 loop:true
-              },
-              swiperList:[
-                {id:'001',imgUrl:'@/../static/img/5.jpg'},
-                {id:'002 ',imgUrl:'@/../static/img/11.jpg'},
-                {id:'004 ',imgUrl:'@/../static/img/6.jpg'},
-                {id:'005 ',imgUrl:'@/../static/img/4.jpg'}
-              ]
+              }
             }
         },
-
+        computed: {
+          showSwiper() {
+            return this.list.length;
+          }
+        }
     }
 </script>
 

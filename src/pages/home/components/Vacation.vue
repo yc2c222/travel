@@ -4,7 +4,7 @@
     <div class="title">Vacation</div>
     <ul>
       <!--border-bottom设置了1像素边框 styles-》border.css-->
-      <li class="item border-bottom" v-for="item in recommendList" :key="item.id">
+      <li class="item border-bottom" v-for="item in list" :key="item.id">
         <div class="item-img-wrapper">
           <img :src="item.imgUrl" alt="item.id" class="item-img">
         </div>
@@ -20,18 +20,8 @@
 <script>
   export default {
     name: 'HomeVacation',
-    data() {
-      return {
-        recommendList: [
-          {id:'001',imgUrl:'@/../static/img/recommend-5.jpg',title:'Lorem',desc:'Lorem ipsum dolor sit amet,consectetur adipisicing elit.Dolore,eum.'},
-          {id:'002',imgUrl:'@/../static/img/recommend-3.jpeg',title:'Lorem',desc:'Lorem ipsum dolor sit amet,consectetur adipisicing elit.Dolore,eum.'},
-          {id:'003',imgUrl:'@/../static/img/recommend-4.jpeg',title:'Lorem',desc:'Lorem ipsum dolor sit amet,consectetur adipisicing elit.Dolore,eum.'},
-          {id:'004',imgUrl:'@/../static/img/recommend-8.jpeg',title:'Lorem',desc:'Lorem ipsum dolor sit amet,consectetur adipisicing elit.Dolore,eum.'},
-          {id:'005',imgUrl:'@/../static/img/recommend-7.jpeg',title:'Lorem',desc:'Lorem ipsum dolor sit amet,consectetur adipisicing elit.Dolore,eum.'},
-          {id:'006',imgUrl:'@/../static/img/recommend-11.jpeg',title:'Lorem',desc:'Lorem ipsum dolor sit amet,consectetur adipisicing elit.Dolore,eum.'},
-          {id:'007',imgUrl:'@/../static/img/recommend-13.jpeg',title:'Lorem',desc:'Lorem ipsum dolor sit amet,consectetur adipisicing elit.Dolore,eum.'},
-        ]
-      }
+    props:{
+      list: Array
     }
   }
 </script>
@@ -47,7 +37,6 @@
 <style lang="stylus" type="text/stylus" scoped>
   @import "~styles/mixins.styl"
   .title
-    margin-top :.1rem
     line-height : .5rem
     background-color :#999999
     text-indent .3rem

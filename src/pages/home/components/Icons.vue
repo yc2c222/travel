@@ -2,7 +2,7 @@
 <template>
   <!--最外层Div用于设计子组件的宽高比里-->
 	<div class="icons">
-    <swiper>
+    <swiper :options="swiperOption">
       <!--用 v-for 做嵌套循环-->
       <swiper-slide v-for="(page,index) in pages" :key="index">
         <div class="icon" v-for="item in page" :key="item.id">
@@ -19,29 +19,21 @@
 
 <script>
     export default {
-        name: 'HomeIcons',
-        data() {
-            return {
-              iconList:[
-                {id:'001',class:'fa  fa-github-alt fa-4x icon-img-content',desc:'iconText'},
-                {id:'002',class:'fa  fa-yc-square fa-4x icon-img-content',desc:'iconText'},
-                {id:'003',class:'fa  fa-github-alt fa-4x icon-img-content',desc:'iconText'},
-                {id:'004',class:'fa  fa-yc-square fa-4x icon-img-content',desc:'iconText'},
-                {id:'005',class:'fa  fa-github-alt fa-4x icon-img-content',desc:'iconText'},
-                {id:'006',class:'fa  fa-yc-square fa-4x icon-img-content',desc:'iconText'},
-                {id:'007',class:'fa  fa-github-alt fa-4x icon-img-content',desc:'iconText'},
-                {id:'008',class:'fa  fa-yc-square fa-4x icon-img-content',desc:'iconText'},
-                {id:'009',class:'fa  fa-gratipay fa-4x icon-img-content',desc:'iconText'},
-                {id:'010',class:'fa  fa-gratipay fa-4x icon-img-content',desc:'iconText'},
-                {id:'011',class:'fa  fa-gratipay fa-4x icon-img-content',desc:'iconText'},
-                {id:'012',class:'fa  fa-gratipay fa-4x icon-img-content',desc:'iconText'}
-              ]
-            }
-        },
+      name: 'HomeIcons',
+      props: {
+        list:Array
+      },
+      data (){
+        return {
+          swiperOption: {
+            autoplay:false
+          }
+        }
+      },
       computed: {
           pages() {
             const pages = [];
-            this.iconList.forEach((item,index) => {
+            this.list.forEach((item,index) => {
               const page = Math.floor(index/8);
               if (!pages[page]) {
                 pages[page] = [];
