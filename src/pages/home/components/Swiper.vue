@@ -24,7 +24,7 @@
               swiperList:[
                 {id:'001',imgUrl:'@/../static/img/5.jpg'},
                 {id:'002 ',imgUrl:'@/../static/img/11.jpg'},
-                {id:'004 ',imgUrl:'@/../static/img/5.jpg'},
+                {id:'004 ',imgUrl:'@/../static/img/6.jpg'},
                 {id:'005 ',imgUrl:'@/../static/img/4.jpg'}
               ]
             }
