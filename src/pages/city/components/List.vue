@@ -1,3 +1,6 @@
+<!--此组件与Alphabet相互传值，即兄弟组件传值，非父子组件，不能直接用props
+Alphabet组件先通过$emit的方式触发一个事件，父组件city通过监听执行这个事件，随后获得参数，父组件获得参数以后，以常规父子组件的通信方式props：使其子组件List获得参数
+-->
 <template>
 	<div class="list" ref="wrapper">
     <div>
@@ -5,7 +8,7 @@
         <div class="title border-topbottom">Current City</div>
         <div class="button-list">
           <div class="button-wrapper">
-            <div class="button">CD</div>
+            <div class="button">成都</div>
           </div>
         </div>
       </div>
@@ -18,7 +21,7 @@
         </div>
       </div>
       <!--用v-for作循环时，（item，key），而不是用index-->
-      <div class="area" v-for="(item,key) in cities" :key="key">
+      <div class="area" v-for="(item,key) in cities" :key="key" :ref="key">
       <div class="title border-topbottom">{{key}}</div>
       <div class="item-list">
         <div class="item border-bottom" v-for="innerItem in item" :key="innerItem.id">{{innerItem.name}}</div>
@@ -34,10 +37,22 @@
         name: 'CityList',
         props: {
           hotCities:Array,
-          cities:Object
+          cities:Object,
+          letter:String
         },
         mounted() {
           this.scroll = new Bscroll(this.$refs.wrapper)
+        },
+        // 从父组件接收到来自Alphabet的参数Letter后，通过watch监听letter，只要letter变化，就会触发其后的方法
+        watch: {
+          letter() {
+            if (this.letter) {
+              // 通过$this.refs[this.letter]获取到响应ref=key的一个div class=area的元素
+              const element = this.$refs[this.letter][0];
+              //betterScroll提供的接口，参数为一个DOM元素，滚动到指定的元素位置
+              this.scroll.scrollToElement(element);
+            }
+          }
         }
     }
 </script>

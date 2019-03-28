@@ -2,8 +2,9 @@
   <div>
     <city-header></city-header>
     <city-search></city-search>
-    <city-list :cities="cities" :hotCities="hotCities"></city-list>
-    <city-alphabet :cities="cities"></city-alphabet>
+    <city-list :cities="cities" :hotCities="hotCities" :letter="letter"></city-list>
+    <!--此组件在这里监听city-alphabet里的handleLetterClick-->
+    <city-alphabet :cities="cities" @change="handleLetterClick"></city-alphabet>
   </div>
 </template>
 
@@ -24,7 +25,8 @@
         data() {
             return {
               cities:{},
-              hotCities:[]
+              hotCities:[],
+              letter:'',
             }
         },
       methods: {
@@ -39,6 +41,10 @@
             this.cities = data.cities;
             this.hotCities = data.hotCities;
           }
+        },
+        handleLetterClick(letter) {
+            // 在此处接收到来自子组件的参数letter，并赋值给本组件里的letter ,再用props的方式传递给list组件
+            this.letter = letter;
         }
       },
       mounted() {
