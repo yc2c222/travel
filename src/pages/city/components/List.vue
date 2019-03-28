@@ -5,69 +5,24 @@
         <div class="title border-topbottom">Current City</div>
         <div class="button-list">
           <div class="button-wrapper">
-            <div class="button">beijing</div>
+            <div class="button">CD</div>
           </div>
         </div>
       </div>
       <div class="area">
-        <div class="title border-topbottom">Current City</div>
+        <div class="title border-topbottom">Hot City</div>
         <div class="button-list">
-          <div class="button-wrapper">
-            <div class="button">beijing</div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">beijing</div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">beijing</div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">beijing</div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">beijing</div>
+          <div class="button-wrapper" v-for="item in hotCities" :key="item.id">
+            <div class="button">{{item.name}}</div>
           </div>
         </div>
       </div>
-      <div class="area">
-      <div class="title border-topbottom">A</div>
+      <!--用v-for作循环时，（item，key），而不是用index-->
+      <div class="area" v-for="(item,key) in cities" :key="key">
+      <div class="title border-topbottom">{{key}}</div>
       <div class="item-list">
-        <div class="item border-bottom">Paris</div>
-        <div class="item border-bottom">Paris</div>
-        <div class="item border-bottom">Paris</div>
-        <div class="item border-bottom">Paris</div>
-        <div class="item border-bottom">Paris</div>
+        <div class="item border-bottom" v-for="innerItem in item" :key="innerItem.id">{{innerItem.name}}</div>
       </div>
-    </div>
-      <div class="area">
-        <div class="title border-topbottom">B</div>
-        <div class="item-list">
-          <div class="item border-bottom">Paris</div>
-          <div class="item border-bottom">Paris</div>
-          <div class="item border-bottom">Paris</div>
-          <div class="item border-bottom">Paris</div>
-          <div class="item border-bottom">Paris</div>
-        </div>
-      </div>
-      <div class="area">
-        <div class="title border-topbottom">C</div>
-        <div class="item-list">
-          <div class="item border-bottom">Paris</div>
-          <div class="item border-bottom">Paris</div>
-          <div class="item border-bottom">Paris</div>
-          <div class="item border-bottom">Paris</div>
-          <div class="item border-bottom">Paris</div>
-        </div>
-      </div>
-      <div class="area">
-        <div class="title border-topbottom">A</div>
-        <div class="item-list">
-          <div class="item border-bottom">Paris</div>
-          <div class="item border-bottom">Paris</div>
-          <div class="item border-bottom">Paris</div>
-          <div class="item border-bottom">Paris</div>
-          <div class="item border-bottom">Paris</div>
-        </div>
       </div>
     </div>
   </div>
@@ -77,6 +32,10 @@
   import Bscroll from 'better-scroll'
     export default {
         name: 'CityList',
+        props: {
+          hotCities:Array,
+          cities:Object
+        },
         mounted() {
           this.scroll = new Bscroll(this.$refs.wrapper)
         }

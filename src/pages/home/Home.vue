@@ -50,7 +50,6 @@ axios 返回的是一个promise对象-->
               this.recommendList = data.recommendList;
               this.vacationList = data.vacationList;
             }
-            console.log(res)
         }
       },
       mounted (){
