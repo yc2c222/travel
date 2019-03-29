@@ -32,7 +32,8 @@
         return {
           touchStatus:false,
           startY:0,
-          timer:null      //作为节流
+          timer:null,      //作为节流
+          lastIndex:-1
         }
       },
       //当传入Alphabet的值发生变化时，Alphabet会重新渲染，渲染时会执行updated
@@ -59,8 +60,13 @@
               const index= Math.floor((touchY - this.startY)/21);
               if (index >= 0 && index < this.letters.length){
                 this.$emit('change',this.letters[index]);
-                // this.$refs[this.letters[index]][0].style.fontWeight = 'bold';
-                // this.$refs[this.letters[index]][0].style.color = '#222222'
+                if (this.lastIndex >= 0 && index !== this.lastIndex) {
+                  this.$refs[this.letters[this.lastIndex]][0].style.fontWeight = 'normal';
+                  this.$refs[this.letters[this.lastIndex]][0].style.color = '#bbbbbb';
+                  this.$refs[this.letters[index]][0].style.fontWeight = 'bold';
+                  this.$refs[this.letters[index]][0].style.color = '#222222';
+                }
+                this.lastIndex = index;
               }
             },16);
             // const startY = this.$refs['A'][0].offsetTop;      //A顶部到scrollbar顶部的距离
