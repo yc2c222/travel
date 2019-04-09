@@ -45,6 +45,11 @@
       },
       activated () {
         window.addEventListener('scroll',this.handleScroll);
+      },
+      /*window是一个全局对象，对window监听的绑定在任何页面上都会被执行，而不仅是Header.vue页面，由于keepalive，还多处了另一个生命周期函数，
+      deactivated，离开页面或隐藏页面时会执行其中的函数。此处只要在deactivated里解绑对window里scroll的监听，离开当前页面后不会再监听*/
+      deactivated () {
+        window.removeEventListener('scroll',this.handleScroll);
       }
     }
 </script>
