@@ -59,18 +59,19 @@
   @import "~styles/varibles.styl"
   .header-abs
     position:absolute
-    left: .2rem
-    top: .2rem
+    left: .1rem
+    top: .1rem
     width:.8rem
     height:.8rem
     border-radius :.4rem
-    background: rgba(0,0,0,.8)
+    background: rgba(0,0,0,.6)
     text-align :center
     .header-abs-back
       color: #fff
       font-size :.4rem
       line-height :.8rem
   .header-fixed
+    z-index :98
     position :fixed
     top: 0
     left: 0
@@ -79,7 +80,7 @@
     line-height: $headerHeight
     text-align: center
     color: #ffffff
-    background: rgba(0,0,0,0.5)
+    background: #333333
     font-size:.32rem
     .header-fixed-back
       position: absolute
